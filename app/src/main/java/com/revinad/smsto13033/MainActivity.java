@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-
         mName = preferences.getString("autoSaveName", "");
         mStreet = preferences.getString("autoSaveStreet", "");
 
