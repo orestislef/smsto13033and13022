@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sms_to_13033_cl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/name_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/name_hint"
+                android:inputType="textPersonName"
+                android:background="@color/transperant"
+                android:textSize="24sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/street_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name_text_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/street_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/street_hint"
+                android:inputType="textPostalAddress"
+                android:background="@color/transperant"
+                android:textSize="24sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <CheckBox
+            android:id="@+id/save_cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:text="@string/save_name_street_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/street_text_layout" />
+
+        <TextView
+            android:id="@+id/choose_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="32dp"
+            android:text="@string/choose_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/save_cb" />
+
+        <androidx.gridlayout.widget.GridLayout
+            android:id="@+id/choose_grid_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            app:columnCount="2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/choose_label">
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="180dp"
+                android:layout_height="110dp"
+                android:layout_margin="8dp"
+                android:gravity="center_vertical"
+                android:text="@string/btn1_label" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="170dp"
+                android:layout_height="110dp"
+                android:layout_margin="8dp"
+                android:gravity="center_vertical"
+                android:text="@string/btn2_label" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="170dp"
+                android:layout_height="110dp"
+                android:layout_margin="8dp"
+                android:gravity="center_vertical"
+                android:text="@string/btn3_label" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="170dp"
+                android:layout_height="110dp"
+                android:layout_margin="8dp"
+                android:gravity="center_vertical"
+                android:text="@string/btn4_label" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="170dp"
+                android:layout_height="110dp"
+                android:layout_margin="8dp"
+                android:gravity="center_vertical"
+                android:text="@string/btn5_label" />
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="170dp"
+                android:layout_height="110dp"
+                android:layout_margin="8dp"
+                android:gravity="center_vertical"
+                android:text="@string/btn6_label" />
+        </androidx.gridlayout.widget.GridLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

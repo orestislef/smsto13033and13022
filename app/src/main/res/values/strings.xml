@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">SMS to 13033</string>
+
+    <string name="name_label">Ονοματεπώνυμο</string>
+    <string name="name_hint">Εισάγετε Ονοματεπώνυμο</string>
+
+    <string name="street_label">Διεύθυνση Κατοικίας</string>
+    <string name="street_hint">Εισάγετε Διεύθυνση Κατοικίας</string>
+
+    <string name="save_name_street_label">Αποθήκευση Στοιχείων</string>
+
+    <string name="choose_label">Επιλέξτε ένα απο τα παρακάτω για μετακίνηση</string>
+
+    <string name="btn1_label">1. Σε φαρμακείο ή επίσκεψη στον γιατρό</string>
+    <string name="btn2_label">2. Σε Κατάστημα προμηθειών αγαθών</string>
+    <string name="btn3_label">3. Σε τράπεζα</string>
+    <string name="btn4_label">4. για παροχή βοήθειας</string>
+    <string name="btn5_label">5. Σε τελετή ή μετάβαση διαζευγμένων γονέων και τέκνων</string>
+    <string name="btn6_label">6. Σωματική άσκηση σε εξωτερικό χώρο ή κίνηση με κατοικίδιο ζώο</string>
+
+    <string name="error_empty_tv">Πρέπει να συμπληρωθεί</string>
+
+</resources>
