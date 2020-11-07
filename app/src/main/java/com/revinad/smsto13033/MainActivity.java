@@ -6,8 +6,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.Telephony;
+import android.telephony.SmsManager;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -168,20 +171,46 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+//    private void sendSms(int i) {
+//        String msgString = (i + " " + name.getText() + " " + street.getText()).toUpperCase();
+//        Intent intent = new Intent(Intent.ACTION_VIEW);
+//        intent.setType("vnd.android-dir/mms-sms");
+//        intent.putExtra("address", smsNum);
+//        intent.putExtra(Intent.EXTRA_TEXT, msgString);
+//        if (isEditTextEmpty(name)) {
+//            name.setError(getString(R.string.error_empty_tv));
+//            return;
+//        }
+//        if (isEditTextEmpty(street)) {
+//            street.setError(getString(R.string.error_empty_tv));
+//            return;
+//        } else{
+//            Log.d(TAG, "sendSms: " + intent.toString());
+//            startActivity(intent);
+//        }
+//    }
+
     private void sendSms(int i) {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setType("vnd.android-dir/mms-sms");
-        intent.putExtra("address", smsNum);
-        intent.putExtra(Intent.EXTRA_TEXT, (i + " " + name.getText() + " " + street.getText()).toUpperCase());
-        if (isEditTextEmpty(name)) {
-            name.setError(getString(R.string.error_empty_tv));
-            return;
+        String msgBody = (i + " " + name.getText() + " " + street.getText()).toUpperCase();
+        String defaultSmsPackageName = Telephony.Sms.getDefaultSmsPackage(this);
+        Log.d(TAG, "sendSms: " + defaultSmsPackageName);
+        Intent sendIntent = new Intent(Intent.ACTION_SEND);
+        sendIntent.setType("text/plain");
+        sendIntent.putExtra("address", " " + smsNum);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, msgBody);
+        if (defaultSmsPackageName != null) {
+            sendIntent.setPackage(defaultSmsPackageName);
+            if (isEditTextEmpty(name)) {
+                name.setError(getString(R.string.error_empty_tv));
+                return;
+            }
+            if (isEditTextEmpty(street)) {
+                street.setError(getString(R.string.error_empty_tv));
+                return;
+            } else {
+                startActivity(sendIntent);
+            }
         }
-        if (isEditTextEmpty(street)) {
-            street.setError(getString(R.string.error_empty_tv));
-            return;
-        } else
-            startActivity(intent);
     }
 
     public boolean isEditTextEmpty(EditText mInput) {
