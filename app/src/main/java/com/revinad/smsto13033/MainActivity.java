@@ -169,25 +169,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-//    private void sendSms(int i) {
-//        String msgString = (i + " " + name.getText() + " " + street.getText()).toUpperCase();
-//        Intent intent = new Intent(Intent.ACTION_VIEW);
-//        intent.setType("vnd.android-dir/mms-sms");
-//        intent.putExtra("address", smsNum);
-//        intent.putExtra(Intent.EXTRA_TEXT, msgString);
-//        if (isEditTextEmpty(name)) {
-//            name.setError(getString(R.string.error_empty_tv));
-//            return;
-//        }
-//        if (isEditTextEmpty(street)) {
-//            street.setError(getString(R.string.error_empty_tv));
-//            return;
-//        } else{
-//            Log.d(TAG, "sendSms: " + intent.toString());
-//            startActivity(intent);
-//        }
-//    }
-
     private void sendSms(int i) {
         String msgBody = (i + " " + name.getText() + " " + street.getText()).toUpperCase();
         String defaultSmsPackageName = Telephony.Sms.getDefaultSmsPackage(this);
