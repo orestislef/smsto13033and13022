@@ -1,7 +1,5 @@
 package com.revinad.smsto13033;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,6 +13,14 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import umairayub.madialog.MaDialog;
+import umairayub.madialog.MaDialogListener;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -23,7 +29,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             smsNum = "13033",
             mName, mStreet;
     public EditText name, street;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         CheckBox saveCB;
         boolean saveIns = preferences.getBoolean("autoSave", true);
         Button button1, button2, button3, button4, button5, button6;
+        ImageButton infoButton;
+        LinearLayout infoLL;
 
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
@@ -52,6 +59,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button4.setOnClickListener(this::onClick);
         button5.setOnClickListener(this::onClick);
         button6.setOnClickListener(this::onClick);
+
+        infoLL = findViewById(R.id.info_ll);
+        infoLL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                infoDialog();
+            }
+        });
 
         name = findViewById(R.id.name_et);
         street = findViewById(R.id.street_et);
@@ -193,5 +208,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public boolean isEditTextEmpty(EditText mInput) {
         return mInput.length() == 0;
+    }
+
+    public void infoDialog() {
+        new MaDialog.Builder(MainActivity.this)
+                .setTitle(getString(R.string.info_dialog_title))
+                .setMessage(getString(R.string.info_dialog_message))
+                .setPositiveButtonText(getString(R.string.info_dialog_ok))
+                .setButtonOrientation(LinearLayout.VERTICAL)
+                .AddNewButton(R.style.Animation_Design_BottomSheetDialog, getString(R.string.info_dialog_ok), new MaDialogListener() {
+                    @Override
+                    public void onClick() {
+
+                    }
+                })
+                .build();
     }
 }
