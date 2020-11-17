@@ -8,15 +8,19 @@ import android.provider.Telephony;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.widget.ToolbarWidgetWrapper;
 
 import umairayub.madialog.MaDialog;
 import umairayub.madialog.MaDialogListener;
@@ -42,9 +46,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         CheckBox saveCB;
         boolean saveIns = preferences.getBoolean("autoSave", true);
-        Button button1, button2, button3, button4, button5, button6;
-        ImageButton infoButton;
-        LinearLayout infoLL;
+        Button button1, button2, button3, button4, button5, button6 ,infoButton;
+        Toolbar toolbar;
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
@@ -59,14 +65,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button4.setOnClickListener(this::onClick);
         button5.setOnClickListener(this::onClick);
         button6.setOnClickListener(this::onClick);
-
-        infoLL = findViewById(R.id.info_ll);
-        infoLL.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                infoDialog();
-            }
-        });
 
         name = findViewById(R.id.name_et);
         street = findViewById(R.id.street_et);
@@ -178,6 +176,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button6:
                 sendSms(6);
                 break;
+            case R.id.info_button:
+                infoDialog();
+                break;
             default:
                 break;
         }
@@ -223,5 +224,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 })
                 .build();
+    }
+
+    public void shareDialog(){
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_button_text));
+        sendIntent.setType("text/plain");
+
+        Intent shareIntent = Intent.createChooser(sendIntent, null);
+        startActivity(shareIntent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.app_bar,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.info_button:
+                infoDialog();
+                break;
+            case R.id.share_button:
+                shareDialog();
+                break;
+            default:
+                break;
+        }
+        return true;
     }
 }
